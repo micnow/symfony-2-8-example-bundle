@@ -1,0 +1,22 @@
+parameters:
+    example_one.operator_price_modifier: 150
+
+services:
+    example_one.item_factory:
+        class: ExampleOneBundle\Factory\ItemFactory
+
+    example_one.item_repository:
+        class: ExampleOneBundle\Repository\ItemRepository
+        arguments: ['@example_one.item_factory']
+
+    example_one.cart:
+        class: ExampleOneBundle\Entity\Cart
+        arguments: ['@example_one.item_repository']
+
+    example_one.customer_price_modifier:
+        class: ExampleOneBundle\Service\CustomerPriceModifier
+        arguments: ['%example_one.operator_price_modifier%', '@session']
+
+    ExampleOneBundle\Controller\OperatorController:
+        class: ExampleOneBundle\Controller\OperatorController
+        arguments: ['@example_one.cart', '@example_one.customer_price_modifier', '@templating', '@service_container', '@session', '@logger']

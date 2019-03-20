@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if oldTotalPrice < totalPrice %}
+        {% include '@ExampleOne/Operator/operator_price.html.twig' %}
+    {% else %}
+        {% include '@ExampleOne/Operator/default_price.html.twig' %}
+    {% endif %}
+{% endblock %}
