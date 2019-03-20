@@ -1,4 +1,4 @@
-####Symfony 2.8 code examples: 
+Symfony 2.8 code examples: 
 - Entity
 - Factory
 - Repository
